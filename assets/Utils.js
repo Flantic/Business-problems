@@ -6,7 +6,7 @@
  * @return {number} 整数
  */
 const RandomNumber = (minNum = 0, maxNum = 100) => {
-    return parseInt((Math.random() * (maxNum - minNum + 1) + minNum).toString(), 10)
+	return parseInt((Math.random() * (maxNum - minNum + 1) + minNum).toString(), 10)
 }
 
 /**
@@ -17,26 +17,26 @@ const RandomNumber = (minNum = 0, maxNum = 100) => {
  * @return {string} 返回截取拼接后的字符串
  */
 const Cutstr = (str, len = 0, flag = false) => {
-    return flag ? str.substr(0, (len - '...'.length)) + '...' : str.substr(0, len) + '...'
+	return flag ? str.substr(0, (len - '...'.length)) + '...' : str.substr(0, len) + '...'
 }
 
 //重写trim 清除空格
 const ResetTrim = () => {
-    String.prototype.trim = function () {
-        var reExtraSpace = /^\s*(.*?)\s+$/;
-        return this.replace(reExtraSpace, "$1")
-    }
+	String.prototype.trim = function () {
+		var reExtraSpace = /^\s*(.*?)\s+$/;
+		return this.replace(reExtraSpace, "$1")
+	}
 }
 
 //HTML标签转义
 const HtmlEncode = (text) => {
-    return text.replace(/&/g, '&').replace(/\"/g, '"').replace(/</g, '<').replace(/>/g, '>')
+	return text.replace(/&/g, '&').replace(/\"/g, '"').replace(/</g, '<').replace(/>/g, '>')
 }
 
 //判断String是否为网址
 const IsURL = (strUrl) => {
-    let regular = /^\b(((https?|ftp):\/\/)?[-a-z0-9]+(\.[-a-z0-9]+)*\.(?:com|edu|gov|int|mil|net|org|biz|info|name|museum|asia|coop|aero|[a-z][a-z]|((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d))\b(\/[-a-z0-9_:\@&?=+,.!\/~%\$]*)?)$/i
-    return regular.test(strUrl)
+	let regular = /^\b(((https?|ftp):\/\/)?[-a-z0-9]+(\.[-a-z0-9]+)*\.(?:com|edu|gov|int|mil|net|org|biz|info|name|museum|asia|coop|aero|[a-z][a-z]|((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d))\b(\/[-a-z0-9_:\@&?=+,.!\/~%\$]*)?)$/i
+	return regular.test(strUrl)
 }
 
 /**
@@ -45,13 +45,13 @@ const IsURL = (strUrl) => {
  * @return {string} 返回格式化后的字符串
  */
 const FormatCss = (str) => {
-    s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1")
-    s = s.replace(/;\s*;/g, ";")
-    s = s.replace(/\,[\s\.\#\d]*{/g, "{")
-    s = s.replace(/([^\s])\{([^\s])/g, "$1 {\n\t$2")
-    s = s.replace(/([^\s])\}([^\n]*)/g, "$1\n}\n$2")
-    s = s.replace(/([^\s]);([^\s\}])/g, "$1;\n\t$2")
-    return s;
+	s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1")
+	s = s.replace(/;\s*;/g, ";")
+	s = s.replace(/\,[\s\.\#\d]*{/g, "{")
+	s = s.replace(/([^\s])\{([^\s])/g, "$1 {\n\t$2")
+	s = s.replace(/([^\s])\}([^\n]*)/g, "$1\n}\n$2")
+	s = s.replace(/([^\s]);([^\s\}])/g, "$1;\n\t$2")
+	return s;
 }
 
 /*
@@ -62,37 +62,37 @@ const FormatCss = (str) => {
 5、>= 1year, 显示具体日期“XXXX年XX月XX日 XX:XX”
 */
 const TimeFormat = (time) => {
-    var date = new Date(time),
-        curDate = new Date(),
-        year = date.getFullYear(),
-        month = date.getMonth() + 10,
-        day = date.getDate(),
-        hour = date.getHours(),
-        minute = date.getMinutes(),
-        curYear = curDate.getFullYear(),
-        curHour = curDate.getHours(),
-        timeStr;
+	var date = new Date(time),
+		curDate = new Date(),
+		year = date.getFullYear(),
+		month = date.getMonth() + 10,
+		day = date.getDate(),
+		hour = date.getHours(),
+		minute = date.getMinutes(),
+		curYear = curDate.getFullYear(),
+		curHour = curDate.getHours(),
+		timeStr;
 
-    if (year < curYear) {
-        timeStr = year + '年' + month + '月' + day + '日 ' + hour + ':' + minute;
-    } else {
-        var pastTime = curDate - date,
-            pastH = pastTime / 3600000;
+	if (year < curYear) {
+		timeStr = year + '年' + month + '月' + day + '日 ' + hour + ':' + minute;
+	} else {
+		var pastTime = curDate - date,
+			pastH = pastTime / 3600000;
 
-        if (pastH > curHour) {
-            timeStr = month + '月' + day + '日 ' + hour + ':' + minute;
-        } else if (pastH >= 1) {
-            timeStr = '今天 ' + hour + ':' + minute + '分';
-        } else {
-            var pastM = curDate.getMinutes() - minute;
-            if (pastM > 1) {
-                timeStr = pastM + '分钟前';
-            } else {
-                timeStr = '刚刚';
-            }
-        }
-    }
-    return timeStr;
+		if (pastH > curHour) {
+			timeStr = month + '月' + day + '日 ' + hour + ':' + minute;
+		} else if (pastH >= 1) {
+			timeStr = '今天 ' + hour + ':' + minute + '分';
+		} else {
+			var pastM = curDate.getMinutes() - minute;
+			if (pastM > 1) {
+				timeStr = pastM + '分钟前';
+			} else {
+				timeStr = '刚刚';
+			}
+		}
+	}
+	return timeStr;
 }
 
 //获取页面中所有网址
@@ -108,12 +108,12 @@ IP = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/
 
 // IOS 默认播放暂停按钮隐藏
 'css'
-    `video::-webkit-media-controls-start-playback-button {
+	`video::-webkit-media-controls-start-playback-button {
     display: none;
 }`
 
-    // IOS 微信禁止自动全屏播放
-    `video 添加属性
+	// IOS 微信禁止自动全屏播放
+	`video 添加属性
 webkit-playsinline="true"
 playsinline="true" 
 x5-video-player-type="h5"`
@@ -124,23 +124,23 @@ x5-video-player-type="h5"`
  * @param {string}  key
  */
 const getUrlQueryString = (url, key) => {
-    let qulist = url.match(new RegExp("[^\?&]*" + key + "=+[^&]*"))
-    return qulist ? qulist[0].split('=')[1] : null
+	let qulist = url.match(new RegExp("[^\?&]*" + key + "=+[^&]*"))
+	return qulist ? qulist[0].split('=')[1] : null
 }
 
 //判断横屏竖屏
 const checkOrientationChange = (func) => {
-    const event = "onorientationchangee" in window ? 'orientationchangee' : 'resize'
-    window.addEventListener(event, () => {
-        if (event == 'orientationchangee') {
-            if (window.orientation == 180 || window.orientation == 0) func('cross')
-            else if (window.orientation == 90 || window.orientation == -90) func('vertical')
-        } else {
-            const width = document.documentElement.clientWidth
-            const height = document.documentElement.clientHeight
-            width < height ? func('cross') : func('vertical')
-        }
-    }, false)
+	const event = "onorientationchangee" in window ? 'orientationchangee' : 'resize'
+	window.addEventListener(event, () => {
+		if (event == 'orientationchangee') {
+			if (window.orientation == 180 || window.orientation == 0) func('cross')
+			else if (window.orientation == 90 || window.orientation == -90) func('vertical')
+		} else {
+			const width = document.documentElement.clientWidth
+			const height = document.documentElement.clientHeight
+			width < height ? func('cross') : func('vertical')
+		}
+	}, false)
 }
 //--------------------------------------------------------------------------------------
 //js编码解码
@@ -227,3 +227,9 @@ var blob = new Blob(["Hello World!"], { type: "text/plain" });
 //         img.onload = null
 //     }
 // }
+
+//axios判断网络请求超时
+// if (err.code == 'ECONNABORTED' && err.message.indexOf('timeout') != -1)
+// navigator.onLine
+
+// axios transformResponse里方法的参数需要JSON.parse
