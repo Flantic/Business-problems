@@ -1,0 +1,64 @@
+/usr/local/bin/ 全局环境变量
+
+xz格式
+
+压缩
+xz -z 文件路径
+
+解压
+
+xz -d 文件路径
+
+tar格式
+
+压缩
+
+tar -cvf 文件路径
+
+解压(tar xvJf)
+
+tar -xvf 文件路径
+
+解压*.tar.gz格式
+tar  -zxvf 
+
+总结
+1、*.tar 用 tar –xvf 解压
+2、*.gz 用 gzip -d或者gunzip 解压
+3、*.tar.gz和*.tgz 用 tar –xzf 解压
+4、*.bz2 用 bzip2 -d或者用bunzip2 解压
+5、*.tar.bz2用tar –xjf 解压
+6、*.Z 用 uncompress 解压
+7、*.tar.Z 用tar –xZf 解压
+8、*.rar 用 unrar e解压
+9、*.zip 用 unzip 解压
+解压到指定目录　－C /home/cao
+
+./configure –prefix=/usr 指定位置安装
+make
+make install
+make clean
+make distclean 类似make clean,但同时也将configure生成的文件全部删除掉，包括Makefile文件
+
+创建软连接
+ln –s 源文件 目标文件
+带s只是类似创建快捷方式 不带类似复制 但是两种文件都保持同步
+
+sudo
+sudo(选项)(具体参数)
+选项
+-b：在后台执行指令；
+-h：显示帮助；
+-H：将HOME环境变量设为新身份的HOME环境变量；
+-k：结束密码的有效期限，也就是下次再执行sudo时便需要输入密码；。
+-l：列出目前用户可执行与无法执行的指令；
+-p：改变询问密码的提示符号；
+-s<shell>：执行指定的shell；
+-u<用户>：以指定的用户作为新的身份。若不加上此参数，则预设以root作为新的身份；
+-v：延长密码有效期限5分钟；
+-V ：显示版本信息。
+
+npm install -g nrm 管理npm源
+nrm ls
+nrm use taobao 切换源 
+nrm test npm 测试速度  
